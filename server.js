@@ -45,7 +45,7 @@ app.get('/api/robots/five', (req, res) => {
 })
 
 app.post('/api/duel', (req, res) => {
-    rollbar.info( )
+    rollbar.info("user is starting a duel")
     try {
         // getting the duos from the front end
         let {compDuo, playerDuo} = req.body
@@ -64,10 +64,12 @@ app.post('/api/duel', (req, res) => {
 
         // comparing the total health to determine a winner
         if (compHealthAfterAttack > playerHealthAfterAttack) {
+            rollbar.info("We got a loser over here")
             playerRecord.losses++
             res.status(200).send('You lost!')
         } else {
-            playerRecord.losses++
+            rollbar.info("User is victorious")
+            playerRecord.wins++
             res.status(200).send('You won!')
         }
     } catch (error) {
