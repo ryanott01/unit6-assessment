@@ -33,7 +33,7 @@ test('clicking draw button displays choices', async () => {
     await driver.sleep(2000);
 })
 
-test('clicking', async () => {
+test('can select bots', async () => {
     const draw = await driver.findElement(By.id('draw'))
     await draw.click();
     const button = await driver.findElement(By.className('bot-btn'))
